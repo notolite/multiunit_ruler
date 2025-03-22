@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    contain: paint;
+    width: 100vw;
+    height: 100vh;
+}
+
+fieldset {
+    border: none;
+    margin: 10px;
+}
+
+label {
+    margin: 10px;
+}
+
+#物差し {
+    position: relative;
+    background: #ddbb77;
+    overflow: visible;
+    width: auto;
+    cursor: move;
+    border-spacing: 0;
+    transform-origin: bottom left;
+}
+
+#小目盛り列 td {
+    height: 0.2cm;
+    border-right: black 1px solid;
+    border-top: 0;
+    border-bottom: 0;
+}
+
+
+
+#中目盛り列 td,
+#大目盛り列 td {
+    height: 0.4cm;
+    border-right: black 1.7px solid;
+    border-top: 0;
+    border-bottom: 0;
+}
+
+#中目盛り列 {
+    counter-reset: 中単位 -1;
+}
+
+#中目盛り列 td {
+    counter-increment: 中単位;
+}
+
+#中目盛り列 td::before {
+    content: counter(中単位) var(--中単位);
+    margin-left: 2px;
+    font-weight: 300;
+}
+
+#大目盛り列 {
+    counter-reset: 大単位 -1;
+}
+
+#大目盛り列 td {
+    counter-increment: 大単位;
+}
+
+#大目盛り列 td::before {
+    content: counter(大単位) var(--大単位);
+    margin-left: 2px;
+    font-weight: 300;
+}
+
+#ボタン大枠 {
+    position: fixed;
+    bottom: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#ボタン大枠 div {
+    margin: 1px;
+}
+
+#回転系ボタン枠 {
+    left: 50%;
+    transform: translateX(25%);
+}
+
+#ボタン大枠 div button {
+    margin: 2px;
+    background: #888;
+    color: white;
+    border: none;
+    font-weight: 100;
+    font-size: 40px;
+    width: 45px;
+    height: 45px;
+    line-height: 40px;
+
+
+}
+
+@media (min-width: 768px) {
+    #移動系ボタン枠 {
+        display: none;
+    }
+}
