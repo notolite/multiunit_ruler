@@ -16,8 +16,9 @@ fieldset {
     margin: 10px;
 }
 
-label {
-    margin: 10px;
+fieldset input {
+    margin-right: 6px;
+    margin-left: 8px;
 }
 
 #物差し {
@@ -84,10 +85,12 @@ label {
 
 #ボタン大枠 div {
     margin: 1px;
+    width: 196px;
+    display: flex;
 }
 
 #回転系ボタン枠 {
-    left: 50%;
+    left: 49px;
     transform: translateX(25%);
 }
 
@@ -97,16 +100,47 @@ label {
     color: white;
     border: none;
     font-weight: 100;
-    font-size: 40px;
+    font-size: 30px;
     width: 45px;
     height: 45px;
-    line-height: 40px;
+    line-height: 30px;
 
 
+}
+
+p {
+    margin: 8px;
 }
 
 @media (min-width: 768px) {
     #移動系ボタン枠 {
         display: none;
+    }
+
+    .pc説明 {
+        display: block;
+    }
+
+    .携帯説明 {
+        display: none;
+    }
+
+}
+
+@media (max-width: 767px) {
+    .携帯説明 {
+        display: block;
+    }
+
+    .pc説明 {
+        display: none;
+    }
+
+    fieldset label:nth-of-type(2n):after {
+        content: '';
+        display: block;
+        width: 0;
+        margin: 0;
+        padding: 0;
     }
 }
