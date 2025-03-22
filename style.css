@@ -11,6 +11,79 @@ body {
     height: 100vh;
 }
 
+#初期メッセージ {
+    position: absolute;
+    padding: 20px;
+    border-radius: 10px;
+    color: #9d8e87;
+    border: #A3E1F8 2px solid;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+#初期メッセージ .大字中央揃え {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+#初期メッセージ p:not(.大字中央揃え)::before {
+    content: '● ';
+    font-size: smaller;
+    color: #9d8e87;
+}
+
+#初期メッセージ::before {
+    content: 'Hi!';
+    color: #9d8e87;
+    display: block;
+    position: absolute;
+    top: -25px;
+    left: 10px;
+    font-size: 30px;
+    background: white;
+
+}
+
+body>*:not(#初期メッセージ) {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+#初期メッセージ button {
+    appearance: none;
+    display: block;
+    position: relative;
+    padding: 3px;
+    left: 50%;
+    font-size: 1.2rem;
+    transform: translate(-50%, 0);
+    color: #9d8e87;
+    background: white;
+    border: 2px #A3E1F8 solid;
+    outline: 2px #9d8e87 solid;
+    outline-offset: 2px;
+
+    border-radius: 1lh;
+    width: 70px;
+}
+
+#初期メッセージ button:hover {
+    background: #A3E1F8;
+}
+
+#初期メッセージ input {
+    border: none;
+    padding: 5px;
+    margin: 5px;
+    width: 150px;
+    border-bottom: dotted 2px #9d8e87;
+    font-size: 1.2rem;
+    background: #E6F8FA;
+    color: #9d8e87;
+}
+
 fieldset {
     border: none;
     margin: 10px;
@@ -113,6 +186,13 @@ p {
 }
 
 @media (min-width: 768px) {
+    #初期メッセージ {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 450px;
+    }
+
     #移動系ボタン枠 {
         display: none;
     }
@@ -128,6 +208,12 @@ p {
 }
 
 @media (max-width: 767px) {
+    #初期メッセージ {
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 15px;
+    }
+
     .携帯説明 {
         display: block;
     }

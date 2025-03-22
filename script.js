@@ -2,6 +2,7 @@ const 物差し = document.getElementById("物差し");
 const 小目盛り列 = document.getElementById("小目盛り列");
 const 中目盛り列 = document.getElementById("中目盛り列");
 const 大目盛り列 = document.getElementById("大目盛り列");
+const 初期メッセージ = document.getElementById("初期メッセージ");
 let x = 0, y = 0;
 // 物差し位置移動
 
@@ -25,7 +26,7 @@ function Y移動(移動距離) {
 
 
 // 物差し描画
-
+let ディスプレイサイズ;
 const mm = 0.1;
 const cm = 1;
 const dm = 10;
@@ -40,10 +41,23 @@ const 機械工分 = 2.54 / 8;
 const パイカ = 2.54 / 6;
 const インチ = 2.54;
 const フィート = 30.48;
+let 解像度;
 const 現画面高さ = window.innerHeight;
 let 小単位, 中単位, 大単位, 中倍率, 大倍率, 物差し長さ, 大単位記号;
 
-window.onload = () => {
+function ディスプレイサイズ取得() {
+    ディスプレイサイズ = document.getElementById("ディスプレイサイズ").value;
+    解像度 = Math.hypot(screen.width, screen.height) / ディスプレイサイズ / 96;
+    初期動作();
+    初期メッセージ.style.visibility = "hidden";
+    初期メッセージ.style.opacity = 0;
+    document.querySelectorAll("body > *:not(#初期メッセージ)").forEach(element => {
+        element.style.visibility = "visible";
+        element.style.opacity = 1;
+    });
+}
+
+function 初期動作() {
     document.getElementById("尺貫法").checked = true;
     描画(1);
     if (window.innerWidth < 768) {
@@ -121,7 +135,7 @@ function 描画(度量衡) {
     物差し長さ = 大単位 * 8 - 小単位;
     for (let i = 0; i < 物差し長さ; i = i + 小単位) {
         let 新目盛り線 = document.createElement("td");
-        新目盛り線.style.minWidth = 小単位 + "cm";
+        新目盛り線.style.minWidth = 小単位 * 解像度 + "cm";
         小目盛り列.appendChild(新目盛り線);
     }
     for (let i = 0; i < 物差し長さ; i = i + 中単位) {

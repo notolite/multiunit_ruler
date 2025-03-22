@@ -7,6 +7,18 @@
 </head>
 
 <body>
+    <div id="初期メッセージ">
+        <p>This is the multi-unit ruler.</p>
+        <p class="pc説明">The ruler can be displaced by dragging and rotated by pushing the buttons.</p>
+        <p class="携帯説明">The ruler can be displaced and rotated by pushing the buttons.</p>
+        <p>This ruler may have an error of about 1%.</p>
+        <p class="pc説明">FYR, the screen size of the laptop owned by the developper of this website (Thinkpad X390) is
+            13.3 inch.</p>
+        <p class="携帯説明">FYR, the screen size of the smartphone owned by the developper of this website (Pixel 7a) is 6.1
+            inch.</p>
+        <p class="大字中央揃え">Tell me the screen size of your device:</p>
+        <p class="大字中央揃え">> <input id="ディスプレイサイズ" focused>in.</p><button onclick="ディスプレイサイズ取得()">OK</button>
+    </div>
     <fieldset>
         <input type="radio" id="メートル法" name="度量衡" onchange="描画(0)"><label for="メートル法">mm, cm, dm</label>
         <input type="radio" id="尺貫法" name="度量衡" onchange="描画(1)" checked><label for="尺貫法">分, 寸, 尺（曲尺）</label>
@@ -18,8 +30,6 @@
         <input type="radio" id="印刷ヤード・ポンド法" name="度量衡" onchange="描画(5)"><label for="印刷ヤード・ポンド法">pc, in,
             ft</label>
     </fieldset>
-    <p class="pc説明">The ruler can be displaced by dragging and rotated by pushing the buttons.</p>
-    <p class="携帯説明">The ruler can be displaced and rotated by pushing the buttons.</p>
     <table id="物差し">
         <tr id="小目盛り列"></tr>
         <tr id="中目盛り列"></tr>
